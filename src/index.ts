@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { database } from "../utils/database";
+import { database } from "./utils/database";
 import cors from "cors";
 require("dotenv").config();
 const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 5000;
@@ -17,9 +17,9 @@ app.use(cors({ origin: "*" }));
 app.use("/api/v1", authRoutes);
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", adminRoutes);
-// @ts-ignore
 app.get("/", (request: Request, response: Response) => {
-  return response.status(400).send("Hii There ");
+  response.status(400).send("Welcome to Home Page");
+  return;
 });
 
 app.listen(PORT, () => {
