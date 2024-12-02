@@ -60,3 +60,50 @@ npm run start
 ```nginx
 http://localhost:4000
 ```
+
+
+### Checkout All the Api Endpoints
+
+## 1) Register The User/Admin
+This endpoint takes the userName, email, userType, password as the input to register 
+
+
+```nginx 
+http://localhost:4000/api/v1/register
+```
+
+## 2) Login the User
+this endpoint takes the email and Password as the body
+
+
+
+```nginx
+http://localhost:4000/api/v1/login
+```
+
+## 3) Get all the Admins 
+this is the GET endpoint that takes no input parameter
+```nginx
+http://localhost:4000/api/v1/admins
+```
+
+## 4) User to Upload the Assignment
+this endpoint takes the UserID ,task and the Admin ID as the input parameter
+```nginx
+http://localhost:4000/api/v1/upload
+```
+## 5) Admin to Check-out All the Assignments
+this endpoint takes the userid of the admin after the token verification 
+
+```nginx
+http://localhost:4000/api/v1/assignments
+```
+
+## 6) Admin to Accept and Reject the Assignment
+this endpoint takes the id of the assignment 
+```nginx
+http://localhost:4000/api/v1/assignments/:id/accept
+```
+```nginx
+http://localhost:4000/api/v1/assignments/:id/reject
+```
