@@ -12,6 +12,8 @@ interface typeUser {
   userType: string;
 }
 
+
+// Register Controller
 export async function register(request: Request, response: Response) {
   try {
     const { userName, email, userType, password }: typeUser = request.body;
@@ -31,6 +33,7 @@ export async function register(request: Request, response: Response) {
       });
       return;
     }
+    // Hashing the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
@@ -54,6 +57,9 @@ export async function register(request: Request, response: Response) {
   }
 }
 
+
+
+// Login Controller
 export async function login(request: Request, response: Response) {
   try {
     const { email, password }: typeUser = request.body;
@@ -65,7 +71,9 @@ export async function login(request: Request, response: Response) {
       });
       return;
     } else {
+      // Comparing the password
       if (await bcrypt.compare(password, user.password)) {
+        // Creating the token
         const token = jwt.sign(
           { user: user, userType: user.userType, id: user._id },
           JWT_SECRET,

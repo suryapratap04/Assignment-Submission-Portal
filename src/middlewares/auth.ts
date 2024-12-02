@@ -3,6 +3,8 @@ import User from "../models/User";
 import { NextFunction, Request, Response } from "express";
 const JWT_SECRET = process.env.JWT_SECRET as Secret;
 
+
+// Middleware for the Authentication to check the token and user Authenticity
 export async function auth(
   request: Request | any,
   response: Response,
@@ -36,6 +38,9 @@ export async function auth(
     return;
   }
 }
+
+
+// middleware to check if the user is admin or not
 export async function isAdmin(
   request: Request | any,
   response: Response,
@@ -58,6 +63,8 @@ export async function isAdmin(
     return;
   }
 }
+
+// middleware to check if user is user or not admin
 export async function isUser(
   request: Request | any,
   response: Response,

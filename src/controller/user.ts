@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import Assignment from "../models/Assignment";
 import User from "../models/User";
 
+
+// Controller for the user to upload the assignments
 export async function upload(request: Request | any, response: Response) {
   try {
     const user = request.id;
@@ -11,8 +13,8 @@ export async function upload(request: Request | any, response: Response) {
       task: task,
       admin: admin,
     });
-    console.log(user, userId, task, admin);
-    console.log("Assifn", assign);
+    // console.log(user, userId, task, admin);
+    // console.log("Assifn", assign);
     if (assign) {
       response.status(400).send({
         success: false,
@@ -43,6 +45,8 @@ export async function upload(request: Request | any, response: Response) {
   }
 }
 
+
+// Controller for the user to get all the Admins
 export async function getAdmin(request: Request, response: Response) {
   try {
     const admins = await User.find({ userType: "Admin" });
